@@ -5,6 +5,13 @@
     gap: 30px;
 }
 
+.Amir-logo {
+    width: 80px;
+    height: auto;
+    display: block;
+    background: transparent;
+}
+
 .footer-top {
     display: flex;
     justify-content: space-between;

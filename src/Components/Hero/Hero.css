@@ -69,12 +69,11 @@
 
 @media(max-width: 768px) {
     .hero img {
-        margin-bottom: 120px;
+        margin-bottom: 50px;
         width: 260px;
     }
 
     .hero h1 {
-        margin-top: 50px;
         font-size: 50px;
         width: 90%;
     }
