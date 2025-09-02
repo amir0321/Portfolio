@@ -5,13 +5,6 @@
     gap: 30px;
 }
 
-.Amir-logo {
-    width: 80px;
-    height: auto;
-    display: block;
-    background: transparent;
-}
-
 .footer-top {
     display: flex;
     justify-content: space-between;
@@ -81,6 +74,17 @@
     transition: 0.3s;
 }
 
+.hr-class {
+    border: none;
+    height: 4px;
+    width: 100%;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #DF8908 0%, #B415FF 100%);
+    margin: 30px 0;
+    opacity: 0.8;
+}
+
+
 @media(max-width:768px) {
     .footer {
         margin: 50px 70px;
@@ -91,9 +95,23 @@
         gap: 50px;
     }
 
-    .footer-bootom {
+    .footer-bottom {
         display: flex;
         flex-direction: column;
         margin-bottom: 50px;
+        font-size: 15px;
+    }
+
+    .footer-bottom-left {
+        padding-bottom: 20px;
+    }
+
+    .footer-top-right {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .footer-email-input {
+        padding-right: 30px;
     }
 }

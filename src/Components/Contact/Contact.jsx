@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Contact.css";
 import theme_pattern from "../../assets/theme_pattern.svg";
 import mail_icon from "../../assets/mail_icon.svg";
@@ -6,10 +6,22 @@ import location_icon from "../../assets/location_icon.svg";
 import call_icon from "../../assets/call_icon.svg";
 
 const Contact = () => {
+    const [error, setError] = useState("");
 
     const onSubmit = async (event) => {
         event.preventDefault();
         const formData = new FormData(event.target);
+
+        const name = formData.get("name");
+        const email = formData.get("email");
+        const message = formData.get("message");
+
+        if (!name || !email || !message) {
+            setError("Du måste fylla i alla fält!");
+            return;
+        }
+
+        setError(""); // Rensa felmeddelande
 
         formData.append("access_key", "ea24ecd7-fdd4-4e82-8cc9-da3e8397b22c");
 
@@ -27,6 +39,8 @@ const Contact = () => {
 
         if (res.success) {
             alert(res.message);
+        } else {
+            setError("Det gick inte att skicka meddelandet. Försök igen.");
         }
     };
 
@@ -53,6 +67,7 @@ const Contact = () => {
                     </div>
                 </div>
                 <form onSubmit={onSubmit} className="contact-right">
+                    {error && <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>}
                     <label htmlFor="">Your Name</label>
                     <input type="text" placeholder="Enter your name" name="name" />
                     <label htmlFor="">Your Email</label>

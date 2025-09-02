@@ -79,10 +79,9 @@
     }
 
     .hero p {
-        width: 60%;
+        width: 80%;
         font-size: 18px;
         line-height: 32px;
-        margin: 10px 0px;
     }
 
     .hero-action {

@@ -5,6 +5,13 @@
     margin: 20px 170px;
 }
 
+.Amir-logo {
+    width: 80px;
+    height: auto;
+    display: block;
+    background: transparent;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
