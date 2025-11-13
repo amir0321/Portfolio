@@ -15,7 +15,7 @@ const Footer = () => {
         } else {
             setSubscribed(true);
             setError("");
-            setTimeout(() => setSubscribed(false), 2000);
+            setTimeout(() => setSubscribed(false), 1000);
         }
     };
 
@@ -36,7 +36,6 @@ const Footer = () => {
                             onChange={e => setEmail(e.target.value)}
                         />
                     </div>
-                    {/* Meddelande ovanför knappen */}
                     {(subscribed || error) && (
                         <div style={{ marginBottom: "10px", textAlign: "center" }}>
                             {subscribed && (
