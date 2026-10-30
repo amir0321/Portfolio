@@ -1,20 +1,23 @@
-# 🌟 Portfolio Project (React + Vite)
+# 🌟 Portfolio – Ameer Shameel (React + Vite)
 
-This is my personal portfolio built with [React](https://react.dev/) and [Vite](https://vitejs.dev/).  
-The purpose of this project is to showcase my skills, projects, and experience in a modern and responsive web application.
+Min personliga portfoliowebbplats byggd i React och Vite för att presentera mina projekt, tekniska färdigheter och kontaktvägar på ett enkelt och responsivt sätt.
 
 ---
 
-## 🚀 Getting Started
+## 🧠 Hur jag byggde portfolion
 
-### 1. Clone the repository
+- **Komponentbaserad struktur (`src/Components/`):**
+  Jag delade upp sidan i tydliga, fristående komponenter för presentation, projektkort och kontakt så att det är enkelt att lägga till nya projekt allt eftersom utbildningen går framåt.
+- **Snabb laddning med Vite:**
+  Valde React + Vite utan tunga extra-bibliotek för att hålla bygget litet och snabbt.
+
+---
+
+## 🚀 Köra lokalt
+
 ```bash
-
-git clone https://github.com/your-username/portfolio.git
-cd portfolio
-
-Install dependencies
+git clone https://github.com/amir0321/Portfolio.git
+cd Portfolio
 npm install
-
-Start development server
 npm run dev
+```
