@@ -1,35 +1,35 @@
-import filmvisarna1 from "./projects/filmvisarna-1.png";
-import filmvisarna2 from "./projects/filmvisarna-2.png";
-import filmvisarna3 from "./projects/filmvisarna-3.png";
+import filmvisarna1 from "./projects/filmvisarna-1.webp";
+import filmvisarna2 from "./projects/filmvisarna-2.webp";
+import filmvisarna3 from "./projects/filmvisarna-3.webp";
 
-import marginalia1 from "./projects/marginalia-1.png";
-import marginalia2 from "./projects/marginalia-2.png";
-import marginalia3 from "./projects/marginalia-3.png";
+import marginalia1 from "./projects/marginalia-1.webp";
+import marginalia2 from "./projects/marginalia-2.webp";
+import marginalia3 from "./projects/marginalia-3.webp";
 
-import autoeskil1 from "./projects/autoeskil-1.png";
-import autoeskil2 from "./projects/autoeskil-2.png";
-import autoeskil3 from "./projects/autoeskil-3.png";
+import autoeskil1 from "./projects/autoeskil-1.webp";
+import autoeskil2 from "./projects/autoeskil-2.webp";
+import autoeskil3 from "./projects/autoeskil-3.webp";
 
-import airbean1 from "./projects/airbean-1.png";
+import airbean1 from "./projects/airbean-1.webp";
 
-import tracelock1 from "./projects/tracelock-1.png";
-import tracelock2 from "./projects/tracelock-2.png";
-import tracelock3 from "./projects/tracelock-3.png";
+import tracelock1 from "./projects/tracelock-1.webp";
+import tracelock2 from "./projects/tracelock-2.webp";
+import tracelock3 from "./projects/tracelock-3.webp";
 
-import codeforge1 from "./projects/codeforge-1.png";
-import codeforge2 from "./projects/codeforge-2.png";
+import codeforge1 from "./projects/codeforge-1.webp";
+import codeforge2 from "./projects/codeforge-2.webp";
 
-import taskflow1 from "./projects/taskflow-1.png";
-import taskflow2 from "./projects/taskflow-2.png";
+import taskflow1 from "./projects/taskflow-1.webp";
+import taskflow2 from "./projects/taskflow-2.webp";
 
-import nextwatch1 from "./projects/nextwatch-1.png";
-import nextwatch2 from "./projects/nextwatch-2.png";
+import nextwatch1 from "./projects/nextwatch-1.webp";
+import nextwatch2 from "./projects/nextwatch-2.webp";
 
-import frontend1 from "./projects/frontend-1.png";
-import frontend2 from "./projects/frontend-2.png";
+import frontend1 from "./projects/frontend-1.webp";
+import frontend2 from "./projects/frontend-2.webp";
 
-import client1 from "./projects/client-1.png";
-import client2 from "./projects/client-2.png";
+import client1 from "./projects/client-1.webp";
+import client2 from "./projects/client-2.webp";
 
 const mywork_data = [
   {

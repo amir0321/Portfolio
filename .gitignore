@@ -15,6 +15,8 @@ node_modules
 # Build output
 dist
 dist-ssr
+coverage/
+.vercel/
 *.local
 
 # Editor directories and files

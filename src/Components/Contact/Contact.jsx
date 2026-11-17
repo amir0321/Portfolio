@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 import "./Contact.css";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -6,12 +7,20 @@ const COOLDOWN_MS = 60 * 1000;
 const STORAGE_KEY = "portfolio_last_contact_ts";
 
 const Contact = () => {
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
   const [status, setStatus] = useState({ type: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef(null);
+  const submittingRef = useRef(false);
+
+  useEffect(() => {
+    setCaptchaToken("");
+  }, [lang]);
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    if (submittingRef.current) return;
     const form = event.target;
     const formData = new FormData(form);
 
@@ -30,6 +39,22 @@ const Contact = () => {
       return;
     }
 
+    if (name.length > 100 || email.length > 254 || message.length > 5000) {
+      setStatus({ type: "error", message: t.contact.form.errorLength });
+      return;
+    }
+
+    if (!form.elements.email.validity.valid) {
+      setStatus({ type: "error", message: t.contact.form.errorEmail });
+      form.elements.email.focus();
+      return;
+    }
+
+    if (!captchaToken) {
+      setStatus({ type: "error", message: t.contact.form.errorCaptcha });
+      return;
+    }
+
     // Client-side rate limit (60s cooldown)
     try {
       const lastSent = Number(localStorage.getItem(STORAGE_KEY) || 0);
@@ -42,10 +67,13 @@ const Contact = () => {
     }
 
     setStatus({ type: "", message: "" });
+    submittingRef.current = true;
     setIsSubmitting(true);
 
     const payload = {
-      access_key: "ea24ecd7-fdd4-4e82-8cc9-da3e8397b22c",
+      // Web3Forms access keys are public form identifiers, not server secrets.
+      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "ea24ecd7-fdd4-4e82-8cc9-da3e8397b22c",
+      "h-captcha-response": captchaToken,
       name,
       email,
       message,
@@ -53,14 +81,17 @@ const Contact = () => {
     };
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify(payload),
-      }).then((r) => r.json());
+        signal: AbortSignal.timeout(15000),
+      });
+      if (!response.ok) throw new Error("Contact request failed");
+      const res = await response.json();
 
       if (res.success) {
         try {
@@ -76,7 +107,10 @@ const Contact = () => {
     } catch {
       setStatus({ type: "error", message: t.contact.form.errorNetwork });
     } finally {
+      submittingRef.current = false;
       setIsSubmitting(false);
+      setCaptchaToken("");
+      captchaRef.current?.resetCaptcha();
     }
   };
 
@@ -192,6 +226,8 @@ const Contact = () => {
               id="contact-name"
               type="text"
               name="name"
+              autoComplete="name"
+              maxLength={100}
               placeholder={t.contact.form.namePlaceholder}
               required
             />
@@ -203,6 +239,8 @@ const Contact = () => {
               id="contact-email"
               type="email"
               name="email"
+              autoComplete="email"
+              maxLength={254}
               placeholder={t.contact.form.emailPlaceholder}
               required
             />
@@ -213,9 +251,28 @@ const Contact = () => {
             <textarea
               id="contact-message"
               name="message"
+              maxLength={5000}
               rows="4"
               placeholder={t.contact.form.messagePlaceholder}
               required
+            />
+          </div>
+
+          <div className="contact-captcha">
+            <HCaptcha
+              key={lang}
+              ref={captchaRef}
+              sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+              reCaptchaCompat={false}
+              languageOverride={lang}
+              theme="dark"
+              size="compact"
+              onVerify={setCaptchaToken}
+              onExpire={() => setCaptchaToken("")}
+              onError={() => {
+                setCaptchaToken("");
+                setStatus({ type: "error", message: t.contact.form.captchaUnavailable });
+              }}
             />
           </div>
 
