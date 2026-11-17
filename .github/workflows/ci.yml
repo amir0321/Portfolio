@@ -6,6 +6,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    - cron: '23 6 * * 1'
 
 permissions:
   contents: read
@@ -28,5 +30,5 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm test
-      - run: npm audit --audit-level=low
+      - run: npm run audit:security
       - run: npm run build

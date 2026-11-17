@@ -7,6 +7,7 @@ Beskriv problemet och hur ändringen påverkar besökaren.
 - [ ] `npm ci`
 - [ ] `npm run lint`
 - [ ] `npm test`
-- [ ] `npm audit --audit-level=low`
+- [ ] `npm run audit:security`
+- [ ] `npm run audit:full` reviewed, including any documented temporary exception
 - [ ] `npm run build`
 - [ ] Berörda vyer kontrollerade på mobil och större skärm

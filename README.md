@@ -110,7 +110,8 @@ krävs för bland annat Web3Forms, hCaptcha och de externa webbtypsnitten.
 | `npm run lint` | Kontrollerar JavaScript och JSX med ESLint. |
 | `npm test` | Kör regressionstesterna en gång. |
 | `npm run test:watch` | Kör tester i bevakningsläge. |
-| `npm audit --audit-level=low` | Kontrollerar beroenden mot npm:s aktuella sårbarhetsuppgifter. |
+| `npm run audit:security` | Kontrollerar alla produktionsberoenden och tillämpar den dokumenterade säkerhetspolicyn för utvecklingsberoenden. |
+| `npm run audit:full` | Visar hela npm-rapporten, inklusive eventuella tillfälligt accepterade fynd. |
 | `npm run build` | Skapar ett produktionsbygge i `dist/`. |
 | `npm run preview` | Förhandsvisar ett redan skapat produktionsbygge lokalt. |
 | `npm run optimize:images` | Konverterar projektbilder i PNG/JPEG till optimerad WebP. |
@@ -133,7 +134,10 @@ Portfolio/
 ├── public/
 │   ├── favicon.svg
 │   └── robots.txt
-├── scripts/optimize-images.mjs
+├── scripts/
+│   ├── optimize-images.mjs
+│   └── security-audit.mjs       # Säkerhetskontroll med snävt avgränsad policy
+├── security/audit-policy.json  # Tidsbegränsat undantag för ett känt utvecklingsberoende
 ├── src/
 │   ├── Components/
 │   │   ├── About/
@@ -236,7 +240,7 @@ Kör följande före publicering av en ändring:
 ```bash
 npm run lint
 npm test
-npm audit --audit-level=low
+npm run audit:security
 npm run build
 ```
 
@@ -250,6 +254,25 @@ lös captcha och kontrollera att meddelandet når rätt inkorg.
 
 Kontrollera också berörda vyer på smal mobil och större skärm, på båda språken och
 med tangentbord. Automatiska tester ersätter inte visuell kontroll.
+
+### Känt säkerhetsfynd i utvecklingsverktygen
+
+`picomatch@4.0.7` omfattas av
+[GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf).
+Ingen officiell fix fanns vid granskningen den 17 november 2026. En dokumenterad
+riskacceptans gäller endast detta fynd, denna version och den kända kedjan av
+utvecklingsberoenden fram till **17 december 2026 UTC**. Sårbarheten är inte löst.
+
+`npm run audit:security` blockerar fortfarande alla produktionsfynd, andra
+advisories, fel från registret, kritisk allvarlighetsgrad och ett utgånget undantag.
+`npm run audit:full` visar det kvarvarande fyndet och avslutas därför med felkod
+så länge det rapporteras. Undantaget och testerna finns i `security/audit-policy.json`
+och `src/test/security-audit.test.js`. Se [SECURITY.md](SECURITY.md) för riskbedömning
+och villkor för att ta bort undantaget.
+
+Använd `nvm use` för Node 22 och `npm ci` för låsta versioner. Upprepade körningar
+av `npm audit fix --force` kan växla mellan äldre verktygsversioner och dra in fler
+sårbarheter utan att lösa detta fynd.
 
 ## Deployment på Vercel
 
@@ -293,6 +316,9 @@ lokala filer ignoreras av Git:
 
 GitHub Actions kör `npm ci`, lint, tester, säkerhetskontroll och bygge vid pull
 requests till `main` och ändringar på `main`. Jobbet heter **Verify**.
+Kontrollerna körs också varje måndag för att upptäcka nya fynd utan en kodändring.
+Säkerhetssteget kör `npm run audit:security`; fullrapporten kan alltid granskas med
+`npm run audit:full`.
 
 Branchskyddet för `main` kräver pull request, grön `Verify`, uppdaterad branch och
 lösta granskningsdiskussioner. Force push och borttagning av branchen är blockerade.
@@ -313,6 +339,7 @@ Det finns en [PR-mall](.github/pull_request_template.md) för beskrivning och ve
 | Meddelandet syns inte i inkorgen | Kontrollera mottagaren i Web3Forms samt skräppost och övriga inkorgsflikar. |
 | Ändrad miljövariabel får ingen effekt | Starta om Vite lokalt eller skapa en ny deployment i Vercel. |
 | Direkt push till `main` nekas | Använd en branch och PR som passerar `Verify`-kontrollen. |
+| `audit:full` rapporterar det kända picomatch-fyndet | Granska den tidsbegränsade policyn i `SECURITY.md`. Kör inte `audit fix --force` som en generell lösning. |
 
 ## Kontakt
 
