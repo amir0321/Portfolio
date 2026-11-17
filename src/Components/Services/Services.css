@@ -1,122 +1,114 @@
-.services {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 70px;
-    margin: 80px 170px;
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
 }
 
-.services-title {
-    position: relative;
+.service-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
 }
 
-.services-title h1 {
-    font-size: 60px;
-    font-weight: 600;
-    padding: 0px 30px;
+.service-card:hover {
+  transform: translateY(-4px);
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
 }
 
-.services-title img {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: -1;
+.service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.services-format {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    padding: 40px;
-    border-radius: 10px;
-    border: 2px solid white;
-    transition: 0.4s;
-    cursor: pointer;
+.service-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--accent-cyan);
 }
 
-.services-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 80px;
+.service-security .service-icon-box {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--accent-emerald);
 }
 
-.services-format h3 {
-    font-size: 28px;
-    font-weight: 600;
+.service-backend .service-icon-box {
+  background: rgba(129, 140, 248, 0.12);
+  border-color: rgba(129, 140, 248, 0.35);
+  color: var(--accent-indigo);
 }
 
-.services-format h2 {
-    font-size: 38px;
-    font-weight: 800;
-    background: linear-gradient(270deg, #DF8908 50%, #B415FF 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.service-database .service-icon-box {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: var(--accent-amber);
 }
 
-.services-format p {
-    color: #d4d4d4;
-    font-size: 20px;
-    line-height: 30px;
-    max-width: 300px;
+.service-number {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
-.services-readmore {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    margin-top: 20px;
+.service-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
 }
 
-.services-format:hover {
-    background-image: linear-gradient(45deg, #3f0028, #582300);
-    border: 2px solid #ff00ff;
-    transform: scale(1.05);
-    transition: 0.4s;
+.service-desc {
+  color: var(--text-secondary);
+  font-size: 0.98rem;
+  line-height: 1.68;
+  flex-grow: 1;
 }
 
-@media(max-width:768px) {
-    .services {
-        margin: 50px 70px;
-        gap: 50px;
-        align-items: center;
-    }
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
 
-    .services-title h1 {
-        font-size: 50px;
-        padding: 0;
-        font-weight: 600;
-    }
+.service-tag {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  background: rgba(7, 11, 20, 0.7);
+  border: 1px solid var(--border-subtle);
+  color: #cbd5e1;
+}
 
-    .services-title img {
-        width: 130px;
-        margin-right: -20px;
-    }
+.service-example {
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.86rem;
+  color: var(--accent-emerald);
+  font-weight: 500;
+}
 
-    .services-format {
-        gap: 30px;
-        padding: 20px;
-        max-width: 220px;
-    }
+@media (max-width: 860px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 
-    .services-format h2 {
-        font-size: 22px;
-    }
-
-    .services-format p {
-        font-size: 16px;
-        line-height: 24px;
-        max-width: 200px;
-    }
-
-    .services-readmore img {
-        width: 20px;
-    }
-
-    .services-container {
-        grid-template-columns: 1fr;
-    }
+  .service-card {
+    padding: 24px;
+  }
 }

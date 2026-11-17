@@ -19,7 +19,7 @@ If you discover a security vulnerability, please follow these steps:
    Security issues should be kept private until a fix is released.
 
 2. **Contact us directly:**
-   Send an email to ameergamer9@gmail.com (or use [GitHub Security Advisories](https://docs.github.com/en/code-security/security-advisories)) with details.
+   Send an email to ameer.tech28@gmail.com (or use [GitHub Security Advisories](https://docs.github.com/en/code-security/security-advisories)) with details.
 
 3. **Include:**
    - A clear description of the vulnerability  

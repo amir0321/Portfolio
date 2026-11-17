@@ -1,53 +1,82 @@
 import React from "react";
 import "./About.css";
-import theme_pattern from "../../assets/theme_pattern.svg";
-import profile_img from "../../assets/about_profile.jpeg";
+import github_avatar from "../../assets/github_avatar.jpg";
+import { useLanguage } from "../../context/LanguageContext";
 
 const About = () => {
-    return (
-        <div id="about" className="about">
-            <div className="about-title">
-                <h1>About me</h1>
-                <img src={theme_pattern} alt="" />
+  const { t } = useLanguage();
+
+  return (
+    <section id="about" className="section-container about-section">
+      <div className="section-header">
+        <span className="section-eyebrow">{t.about.eyebrow}</span>
+        <h2 className="section-title">{t.about.title}</h2>
+        <p className="section-subtitle">{t.about.subtitle}</p>
+      </div>
+
+      <div className="about-bento-grid">
+        {/* Main story card */}
+        <article className="bento-card bento-story">
+          <div className="bento-story-top">
+            <img
+              src={github_avatar}
+              alt="Ameer Shameel"
+              className="about-avatar"
+            />
+            <div>
+              <h3>{t.about.storyTitle}</h3>
+              <p className="about-role-tag">
+                Frontend · Backend/API · PostgreSQL · Cybersecurity
+              </p>
             </div>
-            <div className="about-sections">
-                <div className="about-left">
-                    <img src={profile_img} style={{ width: "300px" }} alt="" />
+          </div>
+          <p className="bento-paragraph">{t.about.storyP1}</p>
+          <p className="bento-paragraph">{t.about.storyP2}</p>
+        </article>
+
+        {/* Architectural questions card */}
+        <article className="bento-card bento-questions">
+          <h3 className="bento-card-title">{t.about.questionsTitle}</h3>
+          <div className="questions-list">
+            {t.about.questions.map((item, idx) => (
+              <div key={idx} className="question-item">
+                <p className="question-q">“{item.q}”</p>
+                <p className="question-a">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        {/* Tech stack card spanning full width */}
+        <article className="bento-card bento-stack">
+          <h3 className="bento-card-title">{t.about.stackTitle}</h3>
+          <div className="stack-groups-grid">
+            {t.about.stackGroups.map((group, idx) => (
+              <div key={idx} className="stack-group">
+                <h4 className="stack-group-title">{group.name}</h4>
+                <div className="stack-badges">
+                  {group.items.map((tech, i) => (
+                    <span key={i} className="stack-badge">
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-                <div className="about-right">
-                    <div className="about-para">
-                        <p>I’m Amir, a Frontend Developer passionate about building modern, responsive, and user-friendly websites.</p>
-                        <p>I create clean, efficient code to bring ideas to life online.</p>
-                    </div>
-                    <div className="about-skills">
-                        <div className="about-skill"><p>HTML & CSS</p><hr style={{ width: "50%" }} /></div>
-                        <div className="about-skill"><p>React JS</p><hr style={{ width: "70%" }} /></div>
-                        <div className="about-skill"><p>Angular</p><hr style={{ width: "70%" }} /></div>
-                        <div className="about-skill"><p>JavaScript</p><hr style={{ width: "60%" }} /></div>
-                        <div className="about-skill"><p>Next JS</p><hr style={{ width: "40%" }} /></div>
-                        <div className="about-skill"><p>Git & GitHub</p><hr style={{ width: "80%" }} /></div>
-                        <div className="about-skill"><p>Figma</p><hr style={{ width: "30%" }} /></div>
-                    </div>
-                </div>
-            </div>
-            <div className="about-achievements">
-                <div className="about-achievement">
-                    <h1>3+</h1>
-                    <p>YEARS OF EXPERIENCE</p>
-                </div>
-                <hr />
-                <div className="about-achievement">
-                    <h1>90+</h1>
-                    <p>PROJECTS COMPLETED</p>
-                </div>
-                <hr />
-                <div className="about-achievement">
-                    <h1>50+</h1>
-                    <p>HAPPY CLIENTS</p>
-                </div>
-            </div>
-        </div>
-    );
-}
+              </div>
+            ))}
+          </div>
+        </article>
+      </div>
+
+      <div className="about-stats-row">
+        {t.about.stats.map((stat, idx) => (
+          <div key={idx} className="stat-card">
+            <span className="stat-value gradient-text">{stat.value}</span>
+            <span className="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 export default About;
