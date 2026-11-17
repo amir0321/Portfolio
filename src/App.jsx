@@ -1,4 +1,5 @@
 import React from "react";
+import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./Components/Navbar/Navbar";
 import Hero from "./Components/Hero/Hero";
 import About from "./Components/About/About";
@@ -9,16 +10,20 @@ import Footer from "./Components/Footer/Footer";
 
 const App = () => {
   return (
-    <div>
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <MyWork />
-      <Contact />
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="app-shell">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <MyWork />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
-}
+};
 
 export default App;

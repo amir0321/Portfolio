@@ -1,11 +1,142 @@
-* {
+:root {
+  --bg-primary: #070b14;
+  --bg-secondary: #0d1322;
+  --bg-card: rgba(15, 23, 42, 0.72);
+  --bg-card-hover: rgba(23, 35, 62, 0.88);
+  --bg-glass: rgba(10, 15, 29, 0.82);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --accent-emerald: #10b981;
+  --accent-cyan: #38bdf8;
+  --accent-indigo: #818cf8;
+  --accent-amber: #f59e0b;
+
+  --gradient-primary: linear-gradient(135deg, #10b981 0%, #38bdf8 55%, #818cf8 100%);
+  --gradient-subtle: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(56, 189, 248, 0.12) 50%, rgba(129, 140, 248, 0.14) 100%);
+  --gradient-border: linear-gradient(135deg, rgba(16, 185, 129, 0.45), rgba(56, 189, 248, 0.45), rgba(129, 140, 248, 0.35));
+
+  --border-subtle: rgba(148, 163, 184, 0.12);
+  --border-strong: rgba(56, 189, 248, 0.35);
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0 20px 45px -15px rgba(2, 6, 23, 0.75);
+  --shadow-glow: 0 0 35px -8px rgba(16, 185, 129, 0.25);
+
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --container-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 
 body {
-  height: 100vh;
-  background: #161513;
-  color: white;
-  font-family: 'outfit';
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(circle at 12% 10%, rgba(16, 185, 129, 0.09), transparent 32%),
+    radial-gradient(circle at 88% 18%, rgba(56, 189, 248, 0.09), transparent 34%),
+    radial-gradient(circle at 50% 65%, rgba(129, 140, 248, 0.06), transparent 40%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+.section-container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 100px 24px;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 52px;
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  max-width: 680px;
+}
+
+.gradient-text {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 72px 20px;
+  }
+
+  .section-header {
+    margin-bottom: 36px;
+  }
 }
