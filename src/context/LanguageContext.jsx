@@ -113,6 +113,8 @@ const translations = {
         privateNotice: "Privat repo av säkerhets- och kundintegritetsskäl",
         expandDetails: "Visa tekniska val",
         collapseDetails: "Dölj detaljer",
+        showMore: "Visa fler projekt",
+        showLess: "Visa färre projekt",
       },
     },
     contact: {
@@ -264,6 +266,8 @@ const translations = {
         privateNotice: "Private repository for security and client privacy reasons",
         expandDetails: "Show technical choices",
         collapseDetails: "Hide details",
+        showMore: "Show more projects",
+        showLess: "Show fewer projects",
       },
     },
     contact: {

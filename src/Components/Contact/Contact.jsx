@@ -213,7 +213,7 @@ const Contact = () => {
             <textarea
               id="contact-message"
               name="message"
-              rows="6"
+              rows="4"
               placeholder={t.contact.form.messagePlaceholder}
               required
             />

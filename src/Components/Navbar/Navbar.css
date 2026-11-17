@@ -33,6 +33,13 @@
   font-size: 1.2rem;
   letter-spacing: -0.02em;
   color: var(--text-primary);
+  min-width: 0;
+}
+
+.brand-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .brand-mark {
@@ -195,6 +202,11 @@
 }
 
 @media (max-width: 920px) {
+  .navbar {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+
   .desktop-only {
     display: none;
   }
@@ -205,9 +217,11 @@
 
   .nav-menu {
     position: fixed;
-    top: 73px;
+    top: 69px;
     left: 16px;
     right: 16px;
+    max-height: calc(100vh - 85px);
+    overflow-y: auto;
     flex-direction: column;
     align-items: stretch;
     background: rgba(10, 15, 29, 0.96);
@@ -252,5 +266,32 @@
     border: 1px solid var(--border-subtle);
     color: var(--text-primary);
     font-weight: 500;
+  }
+}
+
+@media (max-width: 540px) {
+  .nav-github-link {
+    display: none;
+  }
+
+  .brand-logo {
+    font-size: 1.05rem;
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .nav-actions {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .lang-btn {
+    padding: 4px 8px;
+    font-size: 0.74rem;
   }
 }

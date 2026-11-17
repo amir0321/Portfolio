@@ -46,6 +46,7 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  overflow-x: clip;
 }
 
 body {
@@ -59,7 +60,7 @@ body {
   color: var(--text-primary);
   font-family: var(--font-sans);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -83,15 +84,15 @@ textarea {
   width: 100%;
   max-width: var(--container-width);
   margin: 0 auto;
-  padding: 100px 24px;
+  padding: 68px 24px;
 }
 
 .section-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 52px;
+  gap: 10px;
+  margin-bottom: 34px;
 }
 
 .section-eyebrow {
@@ -132,11 +133,19 @@ textarea {
 }
 
 @media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+
   .section-container {
-    padding: 72px 20px;
+    padding: 46px 16px;
   }
 
   .section-header {
-    margin-bottom: 36px;
+    margin-bottom: 24px;
+  }
+
+  .section-subtitle {
+    font-size: 0.98rem;
   }
 }
