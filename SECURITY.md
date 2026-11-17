@@ -5,6 +5,28 @@
 Security fixes apply to the latest deployed commit on `main`. This personal
 portfolio does not maintain separate release branches or older supported versions.
 
+## Temporary development dependency exception
+
+`npm run audit:security` always blocks production vulnerabilities, unknown
+advisories, registry errors and incomplete audit results. The full, unfiltered
+report is available through `npm run audit:full`.
+
+One known advisory is temporarily accepted until **2026-12-17 UTC**:
+[GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf),
+affecting development-only `picomatch@4.0.7` through Vite/Vitest and their
+`fdir`/`tinyglobby` dependencies. No official patched version was available when
+reviewed on 2026-11-17. This is risk acceptance, **not a vulnerability fix**.
+
+This portfolio is deployed as static files. Visitors cannot supply glob patterns
+to its development tools. The exception is restricted to the exact advisory,
+version and development dependency chain in `security/audit-policy.json`.
+Production use, additional advisories, critical severity, changed picomatch
+versions or expiry fail the check. Tests verify these rejection paths.
+
+Remove the exception and update the lockfile as soon as an official fix is
+available. Review the full audit during dependency updates; do not use repeated
+`npm audit fix --force` runs to chase version downgrades.
+
 ## Reporting a Vulnerability
 
 If you discover a security vulnerability, please follow these steps:

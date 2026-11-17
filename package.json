@@ -13,7 +13,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "optimize:images": "node scripts/optimize-images.mjs"
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "audit:security": "npm audit --omit=dev --audit-level=low && node scripts/security-audit.mjs",
+    "audit:full": "npm audit --audit-level=low"
   },
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^2.2.0",

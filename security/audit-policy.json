@@ -1,0 +1,9 @@
+{
+  "advisory": "https://github.com/advisories/GHSA-fc5q-39xc-vjpf",
+  "package": "picomatch",
+  "version": "4.0.7",
+  "affectedPackages": ["picomatch", "fdir", "tinyglobby", "vite", "vitest"],
+  "expires": "2026-12-17T00:00:00.000Z",
+  "reason": "No patched release is published. This static portfolio uses picomatch only through development tools with repository-controlled glob patterns; visitor input is not passed to those tools. The advisory remains open and is not considered fixed.",
+  "review": "Remove this exception and update the lockfile when an official fix is available. Any changed picomatch version, additional advisory, production dependency, critical severity or expiry must fail the check."
+}
