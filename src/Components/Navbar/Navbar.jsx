@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import { useLanguage } from "../../context/LanguageContext";
 
@@ -7,6 +7,35 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleRef = useRef(null);
+  const navRef = useRef(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const closeOnEscape = (event) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const closeOnOutsideClick = (event) => {
+      if (!navRef.current?.contains(event.target)) setMobileOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 1181px)");
+    const closeOnDesktop = (event) => {
+      if (event.matches) setMobileOpen(false);
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOnOutsideClick);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOnOutsideClick);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [mobileOpen]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +76,7 @@ const Navbar = () => {
 
   return (
     <header className={`navbar-wrapper ${scrolled ? "navbar-scrolled" : ""}`}>
-      <nav className="navbar" aria-label="Main navigation">
+      <nav ref={navRef} className="navbar" aria-label={lang === "sv" ? "Huvudnavigation" : "Main navigation"}>
         <a
           href="#home"
           className="brand-logo"
@@ -76,12 +105,13 @@ const Navbar = () => {
           </span>
         </a>
 
-        <ul className={`nav-menu ${mobileOpen ? "nav-menu-open" : ""}`}>
+        <ul id="primary-navigation" className={`nav-menu ${mobileOpen ? "nav-menu-open" : ""}`}>
           {navItems.map((item) => (
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
                 className={`nav-link ${activeSection === item.id ? "nav-link-active" : ""}`}
+                aria-current={activeSection === item.id ? "location" : undefined}
                 onClick={() => handleNavClick(item.id)}
               >
                 {item.label}
@@ -144,11 +174,13 @@ const Navbar = () => {
           </a>
 
           <button
+            ref={toggleRef}
             type="button"
             className="nav-toggle"
             onClick={() => setMobileOpen((prev) => !prev)}
             aria-expanded={mobileOpen}
-            aria-label="Toggle navigation menu"
+            aria-controls="primary-navigation"
+            aria-label={lang === "sv" ? "Öppna eller stäng menyn" : "Toggle navigation menu"}
           >
             <span className={`hamburger-line ${mobileOpen ? "open-1" : ""}`} />
             <span className={`hamburger-line ${mobileOpen ? "open-2" : ""}`} />

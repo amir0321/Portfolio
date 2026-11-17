@@ -113,6 +113,8 @@ const translations = {
         privateNotice: "Privat repo av säkerhets- och kundintegritetsskäl",
         expandDetails: "Visa tekniska val",
         collapseDetails: "Dölj detaljer",
+        showMore: "Visa fler projekt",
+        showLess: "Visa färre projekt",
       },
     },
     contact: {
@@ -125,8 +127,8 @@ const translations = {
         "Jag finns i Stockholm och Eskilstuna med omnejd och arbetar gärna både på plats och på distans.",
       locationValue: "Stockholm & Eskilstuna, Sverige",
       githubLabel: "GitHub-profil & tekniska artiklar",
-      securityNoteTitle: "Skyddat formulär",
-      securityNoteText: "Formuläret använder honeypot-validering och klientbaserad rate-limiting (60s cooldown).",
+      securityNoteTitle: "Trygg kontakt",
+      securityNoteText: "Bekräfta att du är en människa innan du skickar. Meddelandet förmedlas via Web3Forms. Du kan också kontakta mig direkt via e-post.",
       form: {
         nameLabel: "Ditt namn",
         namePlaceholder: "Ange ditt namn",
@@ -137,6 +139,10 @@ const translations = {
         submit: "Skicka meddelande",
         submitting: "Skickar...",
         errorEmpty: "Vänligen fyll i namn, e-post och meddelande.",
+        errorEmail: "Ange en giltig e-postadress.",
+        errorLength: "Namn får vara högst 100 tecken, e-post 254 tecken och meddelande 5 000 tecken.",
+        errorCaptcha: "Bekräfta att du är en människa innan du skickar meddelandet.",
+        captchaUnavailable: "Verifieringen kunde inte laddas. Försök igen eller kontakta mig direkt via e-post.",
         errorCooldown: "Du har nyligen skickat ett meddelande. Vänta en minut innan du skickar igen.",
         errorNetwork: "Det gick inte att skicka meddelandet just nu. Du kan alltid nå mig direkt via e-post.",
         success: "Tack för ditt meddelande! Jag återkommer så snart som möjligt.",
@@ -264,6 +270,8 @@ const translations = {
         privateNotice: "Private repository for security and client privacy reasons",
         expandDetails: "Show technical choices",
         collapseDetails: "Hide details",
+        showMore: "Show more projects",
+        showLess: "Show fewer projects",
       },
     },
     contact: {
@@ -276,8 +284,8 @@ const translations = {
         "Based in the Stockholm and Eskilstuna region, Sweden — open to both on-site, hybrid, and remote opportunities.",
       locationValue: "Stockholm & Eskilstuna, Sweden",
       githubLabel: "GitHub profile & architecture write-ups",
-      securityNoteTitle: "Protected Form",
-      securityNoteText: "This form uses honeypot validation and client-side rate limiting (60s cooldown).",
+      securityNoteTitle: "Get in touch safely",
+      securityNoteText: "Confirm you are human before sending. Your message is delivered through Web3Forms. You can also email me directly.",
       form: {
         nameLabel: "Your Name",
         namePlaceholder: "Enter your name",
@@ -288,6 +296,10 @@ const translations = {
         submit: "Send Message",
         submitting: "Sending...",
         errorEmpty: "Please fill in your name, email, and message.",
+        errorEmail: "Enter a valid email address.",
+        errorLength: "Name must be at most 100 characters, email 254 characters, and message 5,000 characters.",
+        errorCaptcha: "Please confirm you are human before sending your message.",
+        captchaUnavailable: "Verification could not load. Try again or email me directly.",
         errorCooldown: "You recently sent a message. Please wait one minute before sending again.",
         errorNetwork: "Could not send message right now. Feel free to email me directly.",
         success: "Thank you for your message! I will get back to you as soon as possible.",
@@ -319,9 +331,9 @@ export const LanguageProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    document.documentElement.lang = lang;
     try {
       localStorage.setItem("portfolio_lang", lang);
-      document.documentElement.lang = lang;
     } catch {
       // Ignore storage restrictions
     }

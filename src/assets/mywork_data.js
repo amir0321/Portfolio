@@ -1,7 +1,71 @@
+import filmvisarna1 from "./projects/filmvisarna-1.webp";
+import filmvisarna2 from "./projects/filmvisarna-2.webp";
+import filmvisarna3 from "./projects/filmvisarna-3.webp";
+
+import marginalia1 from "./projects/marginalia-1.webp";
+import marginalia2 from "./projects/marginalia-2.webp";
+import marginalia3 from "./projects/marginalia-3.webp";
+
+import autoeskil1 from "./projects/autoeskil-1.webp";
+import autoeskil2 from "./projects/autoeskil-2.webp";
+import autoeskil3 from "./projects/autoeskil-3.webp";
+
+import airbean1 from "./projects/airbean-1.webp";
+
+import tracelock1 from "./projects/tracelock-1.webp";
+import tracelock2 from "./projects/tracelock-2.webp";
+import tracelock3 from "./projects/tracelock-3.webp";
+
+import codeforge1 from "./projects/codeforge-1.webp";
+import codeforge2 from "./projects/codeforge-2.webp";
+
+import taskflow1 from "./projects/taskflow-1.webp";
+import taskflow2 from "./projects/taskflow-2.webp";
+
+import nextwatch1 from "./projects/nextwatch-1.webp";
+import nextwatch2 from "./projects/nextwatch-2.webp";
+
+import frontend1 from "./projects/frontend-1.webp";
+import frontend2 from "./projects/frontend-2.webp";
+
+import client1 from "./projects/client-1.webp";
+import client2 from "./projects/client-2.webp";
+
 const mywork_data = [
+  {
+    id: "tracelock",
+    title: "TraceLock",
+    image: tracelock1,
+    images: [tracelock1, tracelock2, tracelock3],
+    visibility: "private",
+    featured: false,
+    categories: ["security", "private"],
+    accent: "emerald",
+    subtitle: {
+      sv: "Cybersäkerhetsprojekt för detektering av misstänkt webbtrafik",
+      en: "Cybersecurity project for detecting suspicious web traffic",
+    },
+    description: {
+      sv: "Ett privat cybersäkerhetsprojekt där jag utforskar hur webbapplikationer kan identifiera, analysera och hantera avvikande eller misstänkt trafik i realtid med interaktiv hotkarta och portskanning.",
+      en: "A private cybersecurity project exploring how web applications can identify, analyze, and respond to anomalous or suspicious traffic patterns in real-time with an interactive threat map and port scanning.",
+    },
+    role: {
+      sv: "Eget forsknings- och utvecklingsprojekt inom applikationssäkerhet, telemetri och trafikanalys.",
+      en: "Independent research and development project focused on application security, telemetry, and traffic inspection.",
+    },
+    highlight: {
+      sv: "SOC-översikt med realtidstelemetri, geografisk hotkarta, portskanning och detekteringsmekanismer mot automatiserade attacker. Hålls privat av säkerhetsskäl.",
+      en: "SOC dashboard featuring real-time telemetry, geographical threat mapping, port scanning, and automated attack defense heuristics. Kept private for security reasons.",
+    },
+    stack: ["Next.js", "React", "TypeScript", "Leaflet", "AppSec", "Traffic Inspection", "Anomaly Detection"],
+    githubUrl: null,
+    caseStudyUrl: "https://github.com/amir0321/amir0321#privata-projekt",
+  },
   {
     id: "filmvisarna",
     title: "Filmvisarna Cinema",
+    image: filmvisarna1,
+    images: [filmvisarna1, filmvisarna2, filmvisarna3],
     visibility: "public",
     featured: true,
     categories: ["featured", "fullstack", "security", "frontend"],
@@ -29,6 +93,8 @@ const mywork_data = [
   {
     id: "marginalia",
     title: "Marginalia",
+    image: marginalia1,
+    images: [marginalia1, marginalia2, marginalia3],
     visibility: "public",
     featured: true,
     categories: ["featured", "fullstack", "security", "frontend"],
@@ -56,6 +122,8 @@ const mywork_data = [
   {
     id: "autoeskil",
     title: "AutoEskil",
+    image: autoeskil1,
+    images: [autoeskil1, autoeskil2, autoeskil3],
     visibility: "public",
     featured: true,
     categories: ["featured", "fullstack", "security"],
@@ -83,6 +151,8 @@ const mywork_data = [
   {
     id: "airbean-api",
     title: "AirBean API",
+    image: airbean1,
+    images: [airbean1],
     visibility: "public",
     featured: true,
     categories: ["featured", "fullstack"],
@@ -108,104 +178,83 @@ const mywork_data = [
     caseStudyUrl: "https://github.com/amir0321/amir0321/blob/main/projects/airbean-api.md",
   },
   {
-    id: "tracelock",
-    title: "TraceLock",
-    visibility: "private",
-    featured: false,
-    categories: ["security", "private"],
-    accent: "emerald",
-    subtitle: {
-      sv: "Cybersäkerhetsprojekt för detektering av misstänkt webbtrafik",
-      en: "Cybersecurity project for detecting suspicious web traffic",
-    },
-    description: {
-      sv: "Ett privat cybersäkerhetsprojekt där jag utforskar hur webbapplikationer kan identifiera, analysera och hantera avvikande eller misstänkt trafik i realtid.",
-      en: "A private cybersecurity project exploring how web applications can identify, analyze, and respond to anomalous or suspicious traffic patterns.",
-    },
-    role: {
-      sv: "Eget forsknings- och utvecklingsprojekt inom applikationssäkerhet och trafikanalys.",
-      en: "Independent research and development project focused on application security and traffic inspection.",
-    },
-    highlight: {
-      sv: "Fokuserar på detekteringsmekanismer, logganalys och skyddsåtgärder mot automatiserade attacker. Hålls privat av säkerhetsskäl.",
-      en: "Focuses on detection heuristics, request inspection, and defensive countermeasures against automated abuse. Kept private for security reasons.",
-    },
-    stack: ["Cybersecurity", "AppSec", "Traffic Inspection", "Anomaly Detection", "Web Security"],
-    githubUrl: null,
-    caseStudyUrl: "https://github.com/amir0321/amir0321#privata-projekt",
-  },
-  {
     id: "codeforge",
     title: "CodeForge",
+    image: codeforge1,
+    images: [codeforge1, codeforge2],
     visibility: "public",
     featured: false,
     categories: ["frontend", "security"],
     accent: "cyan",
     subtitle: {
-      sv: "Tvåspråkig plattform för webbutveckling & cybersäkerhet",
-      en: "Bilingual digital agency platform for web dev & cybersecurity",
+      sv: "Byrålandningssida med säkerhetsfokus och mörkt tema",
+      en: "Agency landing page with security focus & dark theme",
     },
     description: {
-      sv: "Tvåspråkig (SV/EN) webbplats för digitala tjänster inom webbutveckling och cybersäkerhet, där React Context styr språkväxlingen över hela applikationen.",
-      en: "Bilingual (SV/EN) website showcasing web development and cybersecurity services, powered by React Context for seamless language switching.",
+      sv: "En modern, snabb landningssida för en webb- och mjukvarubyrå med tydlig presentation av tjänster, säkerhetsgranskning, process och prismodeller.",
+      en: "A modern, high-performance agency landing page showcasing engineering services, security auditing, delivery process, and transparent pricing models.",
     },
     role: {
-      sv: "Designade gränssnittet, byggde språkhanteringen med gemensamma språkfiler och säkrade kontaktflödet.",
-      en: "Designed the UI, engineered the React Context i18n system, and implemented client-side form protection.",
+      sv: "Byggde hela frontendupplevelsen med fokus på typografi, mikrointeraktioner, kontrast och responsivitet.",
+      en: "Designed and developed the frontend experience with a focus on typography, micro-interactions, accessibility contrast, and responsive layout.",
     },
     highlight: {
-      sv: "Kontaktformuläret skyddas mot enkla botar med ett dolt honeypot-fält samt 60 sekunders rate-limiting i klienten.",
-      en: "Protected the contact flow against basic spam bots using a hidden honeypot field and a 60-second client-side rate limit.",
+      sv: "Komponentbaserad layout i React och Vite med strikt designsystem och noll onödiga beroenden.",
+      en: "Component-driven layout in React and Vite with a strict design token system and zero unnecessary dependencies.",
     },
-    stack: ["React", "Context API (i18n)", "JavaScript", "CSS3", "Bot Protection"],
-    githubUrl: "https://github.com/amir0321/codeforge",
+    stack: ["React", "Vite", "Tailwind CSS", "JavaScript", "Responsive Design"],
+    githubUrl: "https://github.com/amir0321/CodeForge",
     caseStudyUrl: "https://github.com/amir0321/amir0321/blob/main/projects/other-projects.md#codeforge",
   },
   {
     id: "taskflow",
-    title: "Taskflow",
+    title: "TaskFlow",
+    image: taskflow1,
+    images: [taskflow1, taskflow2],
     visibility: "public",
     featured: false,
-    categories: ["fullstack", "security"],
+    categories: ["frontend"],
     accent: "indigo",
     subtitle: {
-      sv: "Fullstack uppgiftshanterare med JWT & MongoDB",
-      en: "Fullstack task manager with JWT auth & MongoDB",
+      sv: "Produktivitets- och uppgiftshanterare med lokal lagring",
+      en: "Productivity & task management dashboard with local persistence",
     },
     description: {
-      sv: "Fullstackapplikation för att organisera uppgifter efter prioritet, förfallodatum och status med dokumentmodellering i MongoDB och Mongoose.",
-      en: "Fullstack application for organizing tasks by priority, due date, and status using document modeling in MongoDB and Mongoose.",
+      sv: "En ren, tillgänglig och responsiv webbapplikation för att organisera dagliga uppgifter, prioriteringar och produktivitetsstatistik med direkt feedback i gränssnittet.",
+      en: "A clean, accessible, and responsive web app for managing daily tasks, priority levels, and productivity stats with immediate UI feedback.",
     },
     role: {
-      sv: "Byggde både frontend och Express-API samt definierade Mongoose-scheman med ägarreferenser och begränsade prioritetsnivåer.",
-      en: "Built both the frontend and Express API, defining Mongoose schemas with owner references and strict priority enums.",
+      sv: "Utvecklade applikationens UI-komponenter, filtreringslogik och lokala synkronisering.",
+      en: "Developed UI components, multi-criteria filtering logic, and local storage state persistence.",
     },
     highlight: {
-      sv: "Express-middleware verifierar JWT-tokens vid anrop till skyddade rutter och knyter varje uppgift till sin ägare.",
-      en: "Custom Express middleware verifies JWT tokens on protected routes and scopes tasks to their authenticated owner.",
+      sv: "Optimerad för snabb tangentbordsinteraktion, tillståndshantering utan externa bibliotek och tillgängliga ARIA-attribut.",
+      en: "Optimized for fast keyboard interaction, lightweight state management without heavy libraries, and accessible ARIA attributes.",
     },
-    stack: ["React", "Node.js", "Express", "MongoDB", "Mongoose", "JWT"],
+    stack: ["React", "JavaScript", "CSS3", "Local Storage", "Accessibility"],
     githubUrl: "https://github.com/amir0321/TASKFLOW",
     caseStudyUrl: "https://github.com/amir0321/amir0321/blob/main/projects/other-projects.md#taskflow",
   },
   {
     id: "nextwatch",
     title: "NextWatch",
+    image: nextwatch1,
+    images: [nextwatch1, nextwatch2],
     visibility: "public",
     featured: false,
     categories: ["frontend"],
     accent: "amber",
     subtitle: {
-      sv: "Filmapp i React med dedikerat API-servicelager",
-      en: "React movie discovery app with dedicated API service layer",
+      sv: "Film- och streamingkatalog integrerad mot TMDB",
+      en: "Movie & streaming catalog powered by the TMDB API",
     },
     description: {
-      sv: "React-applikation som hämtar populära och kommande filmer från The Movie Database (TMDB) med återanvändbara detaljvyer via dynamiska rutter (/movie/:id).",
-      en: "React application fetching popular and upcoming movies from The Movie Database (TMDB) with reusable detail views via dynamic routing (/movie/:id).",
+      sv: "En streaming-inspirerad webbapplikation där användare söker och utforskar filmer och serier, ser betyg, genrer, trailers och relaterade titlar i realtid.",
+      en: "A streaming-inspired web app allowing users to browse and search movies and TV series, view ratings, trailers, genres, and related titles via TMDB.",
     },
     role: {
-      sv: "Separerade Axios-anrop i ett eget servicelager och skapade en gemensam statuskomponent för laddning, fel och tomma sökresultat.",
-      en: "Isolated Axios calls in a dedicated service layer and built a unified MoviesStatus component for loading, error, and empty states.",
+      sv: "Integrerade TMDB:s REST-API med Axios, byggde sök- och filtreringsgränssnittet samt designade de responsiva filmkorten.",
+      en: "Integrated the TMDB REST API with Axios, built the search and genre filtering UI, and styled responsive movie cards.",
     },
     highlight: {
       sv: "Tydlig separation mellan datahämtning, fel-/laddningstillstånd (MoviesStatus) och presentationskomponenter.",
@@ -218,6 +267,8 @@ const mywork_data = [
   {
     id: "frontend-ui-collection",
     title: "Modern UX · Pärmar & Poesi · Solaris",
+    image: frontend1,
+    images: [frontend1, frontend2],
     visibility: "public",
     featured: false,
     categories: ["frontend"],
@@ -245,6 +296,8 @@ const mywork_data = [
   {
     id: "client-booking-sites",
     title: "Lokala Verksamhets- & Bokningswebbplatser",
+    image: client1,
+    images: [client1, client2],
     visibility: "private",
     featured: false,
     categories: ["fullstack", "frontend", "private"],
@@ -254,8 +307,8 @@ const mywork_data = [
       en: "Custom websites with digital appointment booking for local businesses",
     },
     description: {
-      sv: "Privata kund- och verksamhetsprojekt (bland annat för salonger, trafikskola och bilservice) med fokus på tydlig tjänstepresentation, lokal synlighet och smidig digital tidsbokning.",
-      en: "Private business projects (including hair salons, driving school, and auto service) focused on service presentation, local reach, and digital appointment booking.",
+      sv: "Privata kund- och verksamhetsprojekt (bland annat för Folket Frisör och Trafiksola) med fokus på tydlig tjänstepresentation, lokal synlighet och smidig digital tidsbokning.",
+      en: "Private business projects (including Folket Frisör and Trafiksola) focused on service presentation, local reach, and digital appointment booking.",
     },
     role: {
       sv: "Helhetsansvar för design, responsiv frontend och bokningsflöden anpassade efter respektive verksamhets behov.",

@@ -2,14 +2,8 @@
 
 ## Supported Versions
 
-We provide security updates for the following versions of this project:
-
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | ✅                 |
-| 5.0.x   | ❌                 |
-| 4.0.x   | ✅                 |
-| < 4.0   | ❌                 |
+Security fixes apply to the latest deployed commit on `main`. This personal
+portfolio does not maintain separate release branches or older supported versions.
 
 ## Reporting a Vulnerability
 
@@ -27,9 +21,8 @@ If you discover a security vulnerability, please follow these steps:
    - Potential impact  
 
 4. **Response time:**
-   - We will acknowledge your report within **48 hours**.  
-   - You will receive updates on the progress at least every **7 days**.  
-   - A fix will be prepared, tested, and released as quickly as possible.  
+   - Reports are reviewed as soon as possible; this personal project has no guaranteed response SLA.
+   - A fix will be prepared, tested, and released according to the issue's severity.
 
 5. **Disclosure:**
    - Once the issue is resolved, we will publicly disclose the vulnerability and credit the reporter (unless you prefer to stay anonymous).  
